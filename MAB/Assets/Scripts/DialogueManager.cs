@@ -9,8 +9,7 @@ public class DialogueManager : MonoBehaviour {
 	private Queue<string> sentencesR;
 	public Text lText;
 	public Text rText;
-	
-	
+		
 	// Use this for initialization
 	void Start () {
 		sentencesL = new Queue<string>();
@@ -27,11 +26,9 @@ public class DialogueManager : MonoBehaviour {
 		foreach(string sentence in dialogue.sentences){
 			
 			if(dialogue.surveyName == "Left"){
-				sentencesL.Enqueue(sentence);
-				//Debug.Log(dialogue.surveyName + "has added " + sentencesL.Count);
+				sentencesL.Enqueue(sentence);				
 			}else if(dialogue.surveyName == "Right"){
-				sentencesR.Enqueue(sentence);
-				//Debug.Log(dialogue.surveyName + " has added " + sentencesR.Count);
+				sentencesR.Enqueue(sentence);				
 			}else{
 				Debug.Log("failed to enqueue: " + sentence + " for " + dialogue.surveyName);
 			}												
@@ -42,7 +39,6 @@ public class DialogueManager : MonoBehaviour {
 
 	public void DisplayNextSentence(string name){
 				
-		//Debug.Log("The name passed to DisplayNextSentence was: " + name);
 		if(sentencesL.Count == 0 && sentencesR.Count == 0){
 			EndDialogue();
 			return;
@@ -50,11 +46,9 @@ public class DialogueManager : MonoBehaviour {
 			if(name == "Left"){
 				string Rsentence = sentencesL.Dequeue();
 				lText.text = Rsentence;
-				//Debug.Log(Rsentence);
 			}else if(name == "Right"){
 				string Lsentence = sentencesR.Dequeue();
 				rText.text = Lsentence;
-				//Debug.Log(Lsentence);
 			}		
 								
 		}
